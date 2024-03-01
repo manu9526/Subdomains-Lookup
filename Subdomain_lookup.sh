@@ -22,7 +22,7 @@ sts(){
 	}
 	 
 waits(){
-		echo "$purple \/\/ Just wait and see \/\/ $reset"
+		echo "$purple Subdomain Enumeration Started... $reset"
 }	 
 
 echo "$yellow ******************************************* $reset"
@@ -58,8 +58,9 @@ read -p "$blue Enter the domain to lookup:$reset " domain_Name
 	
 	
 read -p "save to $red $PWD $reset ?(y/n)" Path_Choice
-waits	
+	
 if [ "$Path_Choice" = "y" ] || [ "$Path_Choice" = "Y" ]; then
+waits
 	assetfinder -subs-only $domain_Name | httprobe | sort -u > Subdomains_list.txt
 
 sts
@@ -81,6 +82,7 @@ waits
 	 
 sts
 	 cat $File_Path/Subdomains_list.txt
+	 echo "$yellow- - - - - - - - - - - - - - - $reset"
 	 echo "File Saved in $blue $File_Path/Subdomains_list.txt$reset"
 end
 	fi
